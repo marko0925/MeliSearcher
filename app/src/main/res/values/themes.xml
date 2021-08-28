@@ -1,0 +1,43 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.MeliSearcher" parent="Theme.AppCompat.Light">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/color850</item>
+        <!-- Secondary brand color. -->
+        <item name="background">@color/background_color</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/primary</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <!-- Customize your theme here. -->
+        <item name="appBarLayoutStyle">@style/appBarStyle</item>
+        <item name="toolbarStyle">@style/toolbarStyle</item>
+
+    </style>
+
+
+    <style name="Theme.MeliSearcher.NoActionBar" parent="Theme.MeliSearcher">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+
+    </style>
+
+    <style name="Theme.MeliSearcher.ProgressBar">
+        <item name="colorAccent">@color/blue_meli</item>
+    </style>
+
+    <style name="appBarStyle" parent="Widget.Design.AppBarLayout">
+        <item name="elevation">0dp</item>
+
+    </style>
+
+    <style name="toolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/primary</item>
+        <item name="layout_scrollFlags">scroll|enterAlways</item>
+
+        <item name="android:height">?attr/actionBarSize</item>
+    </style>
+
+</resources>
