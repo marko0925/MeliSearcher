@@ -28,7 +28,7 @@ MeliSearcher es una app movil en android studio desarrollada en kotlin que permi
 ### Listado
 ![](https://i.ibb.co/v3TQnks/Screenshot-20210831-214958.png)
 ### Vista de detalles
-![](https://i.ibb.co/94dv0sf/Screenshot-31-08-2021-9-51-02-p-m.jpg)
+![](https://i.ibb.co/c8sv9Dp/Screenshot-31-08-2021-9-51-02-p-m.jpg)
 # Contribución
 - Crea un Fork del repositorio
 - Clonar en tu maquina mediante `git clone https://github.com/marko0925/MeliSearcher.git`
