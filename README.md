@@ -7,7 +7,7 @@
 
 MeliSearcher es una app movil en android studio desarrollada en kotlin que permite buscar y ver la información de cada uno de los productos en mercadolibre.
 
-#🧠 Caracteristicas
+# 🧠 Caracteristicas
 
 - Basado en el patron arquitectonico MVVM
 - Buscador de productos en mercadolibre por titulo, visualizador con endless scroll, vista en detalle de cada uno de los productos 
@@ -16,9 +16,12 @@ MeliSearcher es una app movil en android studio desarrollada en kotlin que permi
 - Uso de la api publica de Mercadolibre a travez de Retrofit2
 - Gestion de imagenes con Glide
 
-
-**Tabla de contenido**
-
+# Tabla de contenido
+- [MeliSearcher](#melisearcher)  
+- [Caracteristicas](#caracteristicas)  
+- [Screenshots](#screenshots)  
+- [Contribución](#contribucion)  
+- [Creador](#creador)  
 
 # 🌱Screenshots
 
