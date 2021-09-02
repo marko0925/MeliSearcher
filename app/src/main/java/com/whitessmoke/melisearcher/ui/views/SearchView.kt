@@ -27,30 +27,23 @@ class SearchView : AppCompatActivity() {
         setContentView(binding.root)
         observers()
         listeners()
-        println("SE CREO LA VISTA")
     }
 
+    /**
+     * Listeners de la vista
+     */
     private fun listeners() {
 
         binding.sv.onEnterListener {
             searchViewModel.submit(binding.sv.text.trim().toString())
+            //throw  RuntimeException("Test Crash"); // Force a crash
         }
 
     }
 
-
-    /*override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        if (savedInstanceState.containsKey(STATES.QUERY)) {
-            binding.sv.setText(savedInstanceState.getString(STATES.QUERY))
-        }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString(STATES.QUERY, binding.sv.text.toString())
-    }*/
-
+    /**
+     * Observers que interactuan con la vista desde SearchViewModel
+     */
     private fun observers() {
         searchViewModel.callProducts.observe(this, {
             if (!it) {
@@ -63,10 +56,6 @@ class SearchView : AppCompatActivity() {
                 binding.sv.setText("")
             }
         })
-    }
-
-    object STATES {
-        val QUERY: String = "QUERY"
     }
 
 }

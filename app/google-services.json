@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "499250288577",
+    "project_id": "melisearcher",
+    "storage_bucket": "melisearcher.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499250288577:android:7e0b1719c63b11806b0140",
+        "android_client_info": {
+          "package_name": "com.whitessmoke.melisearcher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499250288577-esknduggmv4lgu5thqn0orang84e7lit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzAW4XNr9xGbGB86zKKOcnwZASVwJyLqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "499250288577-esknduggmv4lgu5thqn0orang84e7lit.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

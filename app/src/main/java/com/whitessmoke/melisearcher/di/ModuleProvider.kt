@@ -1,5 +1,6 @@
 package com.whitessmoke.melisearcher.di
 
+import com.whitessmoke.melisearcher.data.detail.network.DetailApi
 import com.whitessmoke.melisearcher.data.result.network.ResultApi
 import dagger.Module
 import dagger.Provides
@@ -24,6 +25,16 @@ object ModuleProvider {
     }
 
     /**
+     * Provide module para obtener DetailApi para las peticiones retrofit del caso de uso
+     * Detail
+     */
+    @Provides
+    @Singleton
+    fun provideDeatilApi(retrofit: Retrofit): DetailApi {
+        return retrofit.create(DetailApi::class.java)
+    }
+
+    /**
      * Provide para injectar Retrofit como dependencia
      */
     @Provides
@@ -32,7 +43,6 @@ object ModuleProvider {
         return Retrofit.Builder().baseUrl("https://api.mercadolibre.com/")
             .addConverterFactory(GsonConverterFactory.create()).build()
     }
-
 
 
 }

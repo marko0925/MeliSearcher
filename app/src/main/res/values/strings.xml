@@ -3,4 +3,11 @@
     <string name="buscador">Buscador</string>
     <string name="buscar">Buscar...</string>
     <string name="resultados">Resultados</string>
+    <string name="detalles">Detalles</string>
+    <string name="example_text">Somos Comercializadora Bitex SAS  Patines En Linea Gosome  Los patines Gosome son semiprofesionales y tienen llantas en goma con luces, tamaño ajustable desde la talla 38 hasta la talla 41, con rodamientos de acero tipo estándar internacional para un deslizamiento suave, marco de aluminio curvado permite una mayor capacidad de carga.  Caracteristicas - Modelo: GOSOME 5661-1023 - Color: Negro - Material: Metal, plástico, goma, - Talla: 38, 39, 40, 41 (ajustable) - 4 ruedas - Luces LED llantas</string>
+    <string name="informaci_n_sobre_el_vendedor">Información sobre el vendedor</string>
+    <string name="ubicaci_n">Ubicación</string>
+    <string name="informaci_n_del_producto">Información del producto</string>
+    <string name="garantia_del_vendedor">Garantia del vendedor</string>
+    <string name="descripci_n">Descripción</string>
 </resources>

@@ -34,6 +34,10 @@ fun EditText.onTextListener(listener: (query: String) -> Unit) {
 
 }
 
+/**
+ * Detecta cuando se interacciona con el boton `send` del teclado
+ * @param listener listener confirmando la pulsación de la tecla
+ */
 fun EditText.onEnterListener(listener: () -> Unit) {
     this.setOnEditorActionListener { v, actionId, event ->
         println(actionId)

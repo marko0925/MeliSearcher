@@ -1,5 +1,6 @@
 package com.whitessmoke.melisearcher.ui.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +9,9 @@ import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.whitessmoke.melisearcher.adapters.result.IItemResultClicked
 import com.whitessmoke.melisearcher.adapters.result.ResultsAdapter
+import com.whitessmoke.melisearcher.data.common.ModelProduct
 import com.whitessmoke.melisearcher.databinding.ActivityResultsViewBinding
 import com.whitessmoke.melisearcher.ext.snackBar
 import com.whitessmoke.melisearcher.ui.viewModels.ResultsViewModel
@@ -21,21 +24,26 @@ class ResultsView : AppCompatActivity() {
     lateinit var query: String
     val resultsViewModel: ResultsViewModel by viewModels()
     lateinit var adapter: ResultsAdapter
+    val ths: ResultsView = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResultsViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.elevation = 0f
         query = intent.getStringExtra("query").toString()
         observers()
         listeners()
-        resultsViewModel.sendQuery(query)
+        resultsViewModel.sendQuery(query) //enviamos el query escrito por el usuario apenas se carga la vista
         createAdapter()
     }
 
+
+    /**
+     * Metodo que gestiona las acciones de los listeners de la vista
+     */
     private fun listeners() {
 
         binding.rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -58,8 +66,18 @@ class ResultsView : AppCompatActivity() {
         })
     }
 
+    /**
+     * Creamos el adapter del listado de productos
+     */
     fun createAdapter() {
-        adapter = ResultsAdapter()
+        adapter = ResultsAdapter(object : IItemResultClicked {
+            override fun itemClicked(item: ModelProduct) {
+                val intent = Intent(ths, DetailView::class.java)
+                intent.putExtra("id", item.id)
+                startActivity(intent)
+            }
+
+        })
         binding.rv.adapter = adapter
         binding.rv.layoutManager = LinearLayoutManager(this)
 
@@ -74,6 +92,9 @@ class ResultsView : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    /**
+     * Observers que interactuan con la vista desde ResultsViewModel
+     */
     fun observers() {
         resultsViewModel.isLoading.observe(this, {
 
@@ -102,10 +123,10 @@ class ResultsView : AppCompatActivity() {
         })
         resultsViewModel.pages.observe(this, {
             binding.header.isVisible = true
-            binding.paging.text = "${it} pagina"
+            binding.paging.text = "pagina ${it}"
         })
         resultsViewModel.isLoadingPaging.observe(this, {
-            binding.progressPag.isVisible = it
+            //binding.progressPag.isVisible = it
         })
     }
 

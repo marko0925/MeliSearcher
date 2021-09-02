@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.MeliSearcher" parent="Theme.AppCompat.Light">
+    <style name="Theme.MeliSearcher" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_variant</item>
@@ -24,8 +24,8 @@
     </style>
 
     <style name="appBarStyle" parent="Widget.Design.AppBarLayout">
-        <item name="android:background">@color/background_color</item>
         <item name="elevation">0dp</item>
+        <item name="layout_behavior">@string/appbar_scrolling_view_behavior</item>
     </style>
 
     <style name="toolbarStyle" parent="Widget.AppCompat.Toolbar">

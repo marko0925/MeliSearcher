@@ -17,6 +17,10 @@
     <color name="color850">#333333</color>
     <color name="color450">#8c8c8c</color>
     <color name="color250">#bfbfbf</color>
+    <color name="gray_1">#ddddde</color>
+    <color name="gray_2">#e5e5e6</color>
+    <color name="gray_3">#ededee</color>
     <color name="green_meli">#00a650</color>
     <color name="blue_meli">#3483fa</color>
+
 </resources>
