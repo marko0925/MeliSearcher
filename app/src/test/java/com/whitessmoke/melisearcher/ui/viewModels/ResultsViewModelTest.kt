@@ -61,6 +61,9 @@ internal class ResultsViewModelTest {
         model.paging = paging
     }
 
+    /**
+     * Pendiente por revisar
+     */
     @org.junit.Test
     fun `probar ejecucion devolviendo el model en sendQuery()`() =
         coroutineTestRule.testDispatcher.runBlockingTest {
@@ -95,6 +98,9 @@ internal class ResultsViewModelTest {
             verify(errors, times(1)).onChanged("No fue posible obtener resultados")
         }
 
+    /**
+     * Pendiente por revisar
+     */
     @org.junit.Test
     fun `probar ejecucion lanzando error nextPage()`() =
         coroutineTestRule.testDispatcher.runBlockingTest {
