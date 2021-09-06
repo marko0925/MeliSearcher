@@ -5,7 +5,7 @@ import com.whitessmoke.melisearcher.data.common.ModelProduct
 
 data class ResultModelResponse(
     @SerializedName("query") var query: String,
-    @SerializedName("paging") val paging: ResultModelPaging,
+    @SerializedName("paging") var paging: ResultModelPaging,
     @SerializedName("results") var results: List<ModelProduct>
 
 )

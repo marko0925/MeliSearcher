@@ -8,6 +8,7 @@ import com.whitessmoke.melisearcher.data.common.ModelProduct
 import com.whitessmoke.melisearcher.data.result.model.ResultModelResponse
 import com.whitessmoke.melisearcher.ext.isNull
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -18,12 +19,12 @@ import javax.inject.Inject
 class ResultsViewModel @Inject constructor(
     private val resultsUseCase: ResultsUseCase
 ) : ViewModel() {
-    var pages = MutableLiveData<Int>()
-    var isLoading = MutableLiveData<Boolean>()
-    var resultsData = MutableLiveData<List<ModelProduct>>()
-    var errors = MutableLiveData<String>()
-    var total = MutableLiveData<Int>()
-    var isLoadingPaging = MutableLiveData<Boolean>(false)
+    val pages = MutableLiveData<Int>()
+    val isLoading = MutableLiveData<Boolean>()
+    val resultsData = MutableLiveData<List<ModelProduct?>>()
+    val errors = MutableLiveData<String>()
+    val total = MutableLiveData<Int?>()
+    val isLoadingPaging = MutableLiveData<Boolean>(false)
 
     /**
      * Se envia apenas se carga la vista para consultar los productos que coinciden con el criterio
@@ -40,16 +41,18 @@ class ResultsViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 isLoading.postValue(true)
-                val results: ResultModelResponse? = resultsUseCase.nextPage(str)
+                val results = resultsUseCase.nextPage(str)
                 if (!results.isNull()) {
+
                     resultsData.postValue(results?.results ?: emptyList())
+
                     total.postValue(results?.paging?.total)
                     pages.postValue(1)
                 } else {
                     errors.postValue("No fue posible obtener resultados")
                 }
             } catch (e: Exception) {
-                errors.postValue(e.message)
+                errors.postValue("¡Ops! algo ha ido mal, revisa tu conexión a internet e intentalo de nuevo mas tarde")
             } finally {
                 isLoading.postValue(false)
             }
@@ -70,12 +73,13 @@ class ResultsViewModel @Inject constructor(
      * invoca el metodo [increasePage]
      */
     fun nextPage(query: String) {
+
         viewModelScope.launch {
             try {
                 isLoadingPaging.postValue(true)
                 val results = resultsUseCase.nextPage(query)
                 if (!results.isNull()) {
-                    resultsData.postValue(results?.results ?: emptyList())
+                    resultsData.postValue(results?.results)
                     increasePage()
                     results?.results?.size?.let { resultsUseCase.increaseOffset(it) }
                 } else {
@@ -83,7 +87,8 @@ class ResultsViewModel @Inject constructor(
                 }
 
             } catch (e: Exception) {
-                errors.postValue(e.message)
+                e.printStackTrace()
+                errors.postValue("¡Ops! algo ha ido mal, revisa tu conexión a internet e intentalo de nuevo mas tarde")
             } finally {
                 isLoadingPaging.postValue(false)
             }

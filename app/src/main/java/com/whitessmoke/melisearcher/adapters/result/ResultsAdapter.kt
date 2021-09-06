@@ -18,7 +18,7 @@ class ResultsAdapter(var listenerClicked: IItemResultClicked) :
 
     var results = ArrayList<ModelProduct?>()
 
-    fun addItems(list: List<ModelProduct>) {
+    fun addItems(list: List<ModelProduct?>) {
         val indexInserted = results.size
         /**
          * Eliminamos el ResultItemLoadingVH anterior en caso que exista con el fin de eliminar el

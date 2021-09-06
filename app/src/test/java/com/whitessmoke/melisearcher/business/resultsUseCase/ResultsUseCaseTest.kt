@@ -59,16 +59,5 @@ internal class ResultsUseCaseTest {
             assertEquals(model, res)
         }
 
-    @Test
-    fun `probar obtener error generico`() = coroutineTestRule.testDispatcher.runBlockingTest {
-        whenever(service.getResultsService(anyString(), anyInt())).thenThrow(RuntimeException())
-        try {
-            val res = useCase.nextPage("iphone")
-
-        } catch (e: java.lang.Exception) {
-            assertTrue(e.message?.contains("¡Ops!") == true)
-        }
-    }
-
 
 }

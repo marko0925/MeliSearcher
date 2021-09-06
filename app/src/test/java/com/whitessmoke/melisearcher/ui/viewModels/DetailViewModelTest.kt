@@ -78,7 +78,7 @@ internal class DetailViewModelTest {
         whenever(useCase.getDetails(anyString())).thenThrow(RuntimeException())
         detailView.getDetailsProduct(MCO)
         detailView.errors.observeForever(observer2)
-        val error = "¡Ops! algo ha ido mal, intentalo de nuevo mas tarde"
+        val error = "¡Ops! algo ha ido mal, revisa tu conexión a internet e intentalo de nuevo mas tarde"
         verify(observer2, times(1)).onChanged(error)
     }
 

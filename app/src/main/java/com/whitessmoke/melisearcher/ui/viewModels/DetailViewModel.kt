@@ -7,6 +7,9 @@ import com.whitessmoke.melisearcher.business.detailUseCase.DetailUseCase
 import com.whitessmoke.melisearcher.data.common.ModelProduct
 import com.whitessmoke.melisearcher.ext.isNull
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.lang.RuntimeException
@@ -29,9 +32,9 @@ class DetailViewModel @Inject constructor(
      * En caso de obtener un error proveniente de `getDetails()` modifica el valor de [errors] con
      * el mensaje del error en cuestion
      * @param id codigo MCO del producto de mercadolibre
-     *
      */
     fun getDetailsProduct(id: String) {
+
         viewModelScope.launch {
             try {
                 loading.postValue(true)
@@ -41,9 +44,9 @@ class DetailViewModel @Inject constructor(
                 } else {
                     errors.postValue("No fue posible obtener detalles del producto, intentalo de nuevo mas tarde")
                 }
-
             } catch (e: Exception) {
-                errors.postValue(e.message)
+                e.printStackTrace()
+                errors.postValue("¡Ops! algo ha ido mal, revisa tu conexión a internet e intentalo de nuevo mas tarde")
             } finally {
                 loading.postValue(false)
             }

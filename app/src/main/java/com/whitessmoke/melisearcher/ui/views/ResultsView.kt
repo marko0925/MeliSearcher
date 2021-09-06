@@ -13,6 +13,7 @@ import com.whitessmoke.melisearcher.adapters.result.IItemResultClicked
 import com.whitessmoke.melisearcher.adapters.result.ResultsAdapter
 import com.whitessmoke.melisearcher.data.common.ModelProduct
 import com.whitessmoke.melisearcher.databinding.ActivityResultsViewBinding
+import com.whitessmoke.melisearcher.ext.isNull
 import com.whitessmoke.melisearcher.ext.snackBar
 import com.whitessmoke.melisearcher.ui.viewModels.ResultsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -112,7 +113,9 @@ class ResultsView : AppCompatActivity() {
                     binding.tv.text = "No se encontraron resultados"
                 }
             }
-            it?.let { it1 -> adapter.addItems(it1) }
+            it?.let { list ->
+                adapter.addItems(list)
+            }
 
         })
         resultsViewModel.total.observe(this, {

@@ -60,28 +60,4 @@ internal class DetailUseCaseTest {
             assertEquals(resp, model)
         }
 
-    @org.junit.Test
-    fun `probar obtener fallo en descripcion`() =
-        coroutineTestRule.testDispatcher.runBlockingTest {
-            whenever(service.getDescription(anyString())).thenThrow(RuntimeException())
-
-            try {
-                val resp = useCase.getDetails(MCO)
-            } catch (e: Exception) {
-                assertTrue(e.message?.contains("¡Ops!") == true)
-            }
-
-        }
-
-    @org.junit.Test
-    fun `probar obtener fallo en model`() = coroutineTestRule.testDispatcher.runBlockingTest {
-        whenever(service.getDetail(anyString())).thenThrow(RuntimeException())
-
-        try {
-            val resp = useCase.getDetails(MCO)
-
-        } catch (e: Exception) {
-            assertTrue(e.message?.contains("¡Ops!") == true)
-        }
-    }
 }
